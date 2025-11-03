@@ -9,10 +9,6 @@ body {
     background-color: #fff;
 }
 
-main { 
-    /* Main element styling can be left minimal or removed if not specifically used for layout. */
-}
-
 h1, h2, h3 {
     margin: 0;
 }
@@ -155,7 +151,6 @@ nav a:hover {
     justify-content: center; 
     gap: 10px; 
     margin: 20px auto; 
-    /* Button container max width matches main content width */
     max-width: 1200px; 
     padding: 0 15px;
 }
@@ -180,12 +175,14 @@ nav a:hover {
     background-color: #0056b3; 
 }
 
+/* This class seems intended for a non-responsive set of buttons */
 .button-set-always-horizontal {
     flex-wrap: nowrap; 
 }
 
+/* This is the base for the responsive buttons */
 .button-set-responsive {
-    flex-direction: row; /* Default for large screens */
+    flex-direction: row; /* Default for large screens (overridden by mobile query below) */
 }
 
 
@@ -230,7 +227,7 @@ nav a:hover {
     justify-content: center; 
     gap: 25px;
     max-width: 1200px;
-    margin: 0 auto 40px auto; /* Combined vertical margins */
+    margin: 0 auto 40px auto;
     padding: 20px 15px;
 }
 
@@ -382,7 +379,6 @@ textarea {
     box-sizing: border-box; 
     font-size: 1em;
     font-family: inherit;
-    color: #243dae; 
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
@@ -397,8 +393,8 @@ input[type="date"]:focus,
 input[type="text"]:focus,
 input[type="email"]:focus,
 select:focus {
-    border-color: #243dae;
-    box-shadow: 0 0 5px rgba(36, 61, 174, 0.5);
+    border-color: #007bff; /* Changed focus color to match theme */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     outline: none;
 }
 
@@ -455,6 +451,90 @@ input[type="submit"]:active {
     margin-top: 20px;
 }
 
+
+.filter-controls {
+    display: flex;
+    flex-direction: column; /* Stacks items vertically */
+    align-items: center; /* Centers buttons horizontally */
+    margin: 20px 0;
+    width: 100%;
+}
+
+.filter-controls button {
+    margin: 5px 0;
+    padding: 10px 20px;
+    width: 80%; /* Good width for mobile buttons */
+    max-width: 300px;
+    cursor: pointer;
+    background-color: #ccc; /* Added a default button style */
+    border: 1px solid  #007bff;
+    border-radius: 5px;
+}
+
+/* --- Course Card Display (Retained but simplified) --- */
+#course-cards-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.course-card {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    min-width: 250px;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.course-card h4 {
+    margin: 0;
+    color: #333;
+    font-size: 1em;
+}
+/* Base style for all course cards */
+.course-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Complimentary, different style for COMPLETED courses */
+.course-card-completed {
+    /* Different background color */
+    background-color: #e6ffe6; /* Light green/mint color */
+    
+    /* Stronger border/outline */
+    border: 2px solid #28a745; /* Green border */
+    
+    /* Subtle checkmark icon or visual cue */
+    position: relative;
+}
+
+.course-card-completed::after {
+    content: '✓'; /* Simple checkmark */
+    color: #28a745;
+    font-size: 2em;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    opacity: 0.7;
+}
+
+/* Highlight the completion status text */
+.course-card-completed p strong:contains("Status") {
+    color: #28a745;
+    font-weight: bold;
+}
+
 /* --- RESPONSIVENESS --- */
 
 @media (min-width: 740px) {
@@ -481,16 +561,29 @@ input[type="submit"]:active {
     }
 }
 
-/* Button Media Query (Vertical Stack) */
+/* Responsive Button Group (Vertical Stack for Mobile) */
 @media (max-width: 600px) {
     .button-set-responsive {
         flex-direction: column;
         align-items: center; 
     }
     
-
     .button-set-responsive .action-button {
         width: 100%; 
         max-width: 200px; /* Constrain vertical stack buttons */
+    }
+}
+
+/* Button Media Query (Desktop/Large Screen: Horizontal Alignment for filter controls) */
+@media (min-width: 768px) {
+    .filter-controls {
+        flex-direction: row; /* Switches to horizontal */
+        justify-content: center; /* Centers the button group */
+    }
+
+    .filter-controls button {
+        margin: 0 10px; /* Horizontal spacing */
+        width: auto;
+        max-width: none;
     }
 }
