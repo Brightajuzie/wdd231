@@ -530,7 +530,7 @@ input[type="submit"]:active {
 }
 
 /* Highlight the completion status text */
-.course-card-completed p strong:contains("Status") {
+.course-card-completed p strong {
     color: #28a745;
     font-weight: bold;
 }
