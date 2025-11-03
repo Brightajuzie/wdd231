@@ -1,0 +1,57 @@
+{
+  "weeks": [
+    {
+      "week": "Week 1",
+      "links": [
+        {
+          "url": "week01/holygrail.html",
+          "title": "HG Layout"
+        },
+        {
+          "url": "week01/media-query.html",
+          "title": "mQueries"
+        }
+      ]
+    },
+    {
+      "week": "Week 2",
+      "links": [
+        {
+          "url": "week02/design-principles.html",
+          "title": "Design Principles"
+        }
+      ]
+    },
+    {
+      "week": "Week 3",
+      "links": [
+        {
+          "url": "week03/chamber-site-survey.html",
+          "title": "Chamber Site Survey"
+        },
+        {
+          "url": "week03/responsive-images.html",
+          "title": "Responsive Images"
+        }
+      ]
+    },
+    {
+      "week": "Week 4",
+      "links": [
+        {
+          "url": "week04/form-layout.html",
+          "title": "Form Layout"
+        }
+      ]
+    },
+    {
+      "week": "Week 5",
+      "links": [
+        {
+          "url": "week05/new-ward-members.html",
+          "title": "New Ward Members"
+        }
+      ]
+    }
+  ]
+}

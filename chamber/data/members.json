@@ -1,0 +1,74 @@
+{
+  "companies": [
+    {
+      "name": "Aba Tech Solutions",
+      "address": "123 Market Road, Aba, Abia State",
+      "phone": "+234 801 234 5678",
+      "website": "https://www.abatechsolutions.com",
+      "image": "images/aba-tech-logo.png",
+      "membershipLevel": "Gold",
+      "established": "2018",
+      "services": ["Software Development", "IT Consulting", "Web Design"]
+    },
+    {
+      "name": "Progressive Manufacturing Ltd.",
+      "address": "45 Factory Avenue, Industrial Layout, Aba, Abia State",
+      "phone": "+234 709 876 5432",
+      "website": "http://www.progressivemfg.com.ng",
+      "image": "images/progressive-mfg-icon.png",
+      "membershipLevel": "Silver",
+      "products": ["Textiles", "Garments", "Leather Goods"],
+      "employees": 150
+    },
+    {
+      "name": "Royal Crown Eatery",
+      "address": "78 Hospital Road, Aba, Abia State",
+      "phone": "+234 902 345 6789",
+      "website": "https://www.royalcrowneatery.com",
+      "image": "images/royal-crown-logo.jpg",
+      "membershipLevel": "Bronze",
+      "cuisine": ["Nigerian", "Continental"],
+      "cateringServices": true
+    },
+    {
+      "name": "Bright Future Academy",
+      "address": "90 Aba-Owerri Road, Aba, Abia State",
+      "phone": "+234 813 456 7890",
+      "website": "http://www.brightfutureacademy.edu.ng",
+      "image": "images/bright-future-academy-icon.png",
+      "membershipLevel": "Non-Profit",
+      "levels": ["Primary", "Secondary"],
+      "enrollment": 500
+    },
+    {
+      "name": "Excel Auto Parts",
+      "address": "22 Asa Road, Aba, Abia State",
+      "phone": "+234 704 567 8901",
+      "website": "http://www.excelautoparts.com",
+      "image": "images/excel-auto-logo.png",
+      "membershipLevel": "Silver",
+      "specialization": "Toyota Parts",
+      "deliveryAvailable": true
+    },
+    {
+      "name": "Peace Real Estate",
+      "address": "5 Umuocham Road, Aba, Abia State",
+      "phone": "+234 905 678 9012",
+      "website": "https://www.peacerealestateaba.com",
+      "image": "images/peace-real-estate-icon.png",
+      "membershipLevel": "Gold",
+      "services": ["Property Sales", "Rentals", "Property Management"],
+      "agents": 15
+    },
+    {
+      "name": "Global Printing Services",
+      "address": "10 Azikiwe Road, Aba, Abia State",
+      "phone": "+234 816 789 0123",
+      "website": "http://www.globalprintingservices.com.ng",
+      "image": "images/global-printing-logo.png",
+      "membershipLevel": "Bronze",
+      "services": ["Offset Printing", "Digital Printing", "Large Format"],
+      "turnaroundTime": "2-5 days"
+    }
+  ]
+}

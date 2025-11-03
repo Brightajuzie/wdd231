@@ -1,0 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'AdobeFontName', sans-serif;
+
+}
+
+header,
+main,
+footer {
+
+    margin: 1rem auto;
+
+    padding: 1rem;
+    background-color: #e5f1fe;
+    grid-template-columns: 1fr 1fr;
+    margin: 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+
+
+
+    color: #000;
+
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+}
+
+/* Discover Page Specific Styles */
+.discover-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    /* Example: Sidebar takes 1/4, Main takes 3/4 */
+    gap: 20px;
+    /* Adjust gap as needed */
+    padding: 20px;
+}
+
+.sidebar {
+    padding: 15px;
+    background-color: #f4f4f4;
+    /* Example background */
+    border-radius: 5px;
+}
+
+.sidebar h3,
+.sidebar h4 {
+    margin-top: 0;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Responsive image grid */
+    gap: 15px;
+}
+
+.gallery figure {
+    margin: 0;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    /* Example transition */
+}
+
+.gallery figcaption {
+    text-align: center;
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 5px;
+}
+
+/* Hover Effect for Gallery Images (Desktop Only) */
+@media (min-width: 768px) {
+
+    /* Example breakpoint for non-mobile */
+    .gallery figure:hover img {
+        transform: scale(1.05);
+        /* Example hover effect: slight scale up */
+        opacity: 0.9;
+    }
+}
+
+/* Mobile View (Single Column) */
+@media (max-width: 767px) {
+    .discover-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        margin-bottom: 20px;
+    }
+}
+
+
+.hero {
+    height: auto;
+}
+
+.hero img {
+    width: 100%;
+    height: auto;
+}
+
+.herolabel {
+    position: absolute;
+    top: 300px;
+    left: 80px;
+    background: radial-gradient(#fff, #4D5B97);
+    border: 1px solid rgba(0, 0, 0, .75);
+    padding: 1.5rem;
+    box-shadow: 0 0 3rem #fff;
+    opacity: 0.75;
+    /* Buenas */
+}
+
+.herolabel p {
+    margin: 0;
+    padding: .25rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    font-family: "Great Vibes", serif;
+}
+
+section {
+    padding: 1rem;
+    background-color: #fff;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+/* Styles for the directory page */
+#view-toggle {
+    display: flex;
+    gap: 1em;
+    margin-bottom: 1em;
+    justify-content: center;
+}
+
+#view-toggle button {
+    padding: 0.5em 1em;
+    cursor: pointer;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1em;
+}
+
+.member-card {
+    border: 1px solid #ccc;
+    padding: 1em;
+    text-align: center;
+}
+
+.member-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.member-card h2 {
+    margin-top: 0;
+}
+
+.cards.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.cards.list .member-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    padding: 0.5em 0;
+}
+
+.cards.list .member-card:last-child {
+    border-bottom: none;
+}
+
+.cards.list .member-card img {
+    max-width: 100px;
+    margin-right: 1em;
+}
+
+.cards.list .member-card>* {
+    margin: 0.25em 0;
+}
+
+.cards.list .member-card a {
+    margin-left: auto;
+}
+
+
+
+.parent {
+    margin: 1rem
+}
+
+.parent section {
+    border: 1px solid #bbb;
+    background-color: #e5f1fe;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.parent span {
+    background-color: #e8f1f3;
+    color: #fff;
+    display: block;
+    text-align: center;
+    padding: 75rem 0;
+
+}
+
+.parent p {
+    padding: 10px;
+}
+
+
+
+/* Mobile View ***************/
+#menu {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: .5rem .75rem;
+    background-color: #eee;
+    color: #000;
+}
+
+#menu::before {
+    content: "≡";
+}
+
+nav {
+    background-color: rgb(8, 78, 139);
+}
+
+.navigation {
+    list-style: none;
+    margin: 0 auto;
+    max-width: 760px;
+}
+
+.navigation li {
+    display: none;
+}
+
+.navigation a {
+    display: block;
+    padding: 0.75rem;
+    text-align: left;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.695);
+    font-weight: 700;
+    transition: 0.5s;
+    font-size: clamp(1rem, 2vmin, 1.5rem);
+}
+
+.navigation a:hover,
+navigation a:active {
+    color: white;
+    background-color: black;
+}
+
+.show li {
+    display: block;
+}
+
+#menu.show::before {
+    content: "X";
+}
+
+ 
+@media only screen and (min-width: 40em) {
+    .navigation {
+        display: flex;
+    }
+
+    .navigation li {
+        display: block;
+        /* change state in small view */
+        flex: 1 1 100%;
+    }
+
+    .navigation a {
+        text-align: center;
+    }
+
+    #menu {
+        display: none;
+    }
+}

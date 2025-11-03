@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Roboto, sans-serif;
+}
+
+header,
+main,
+footer {
+    margin: 1rem auto;
+    padding: 1rem;
+    background-color: #e5f1fe;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: #000;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+}
+
+.hero {
+    height: auto;
+    position: relative;
+    /* Needed for absolute positioning of .herolabel */
+}
+
+.hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* To prevent extra space below the image */
+}
+
+.herolabel {
+    position: absolute;
+    top: 30px;
+    /* Adjusted from 300px for better visibility */
+    left: 30px;
+    /* Adjusted from 80px for better visibility */
+    background: radial-gradient(#fff, #4D5B97);
+    border: 1px solid rgba(0, 0, 0, 0.75);
+    padding: 1.5rem;
+    box-shadow: 0 0 3rem #fff;
+    opacity: 0.75;
+    /* Buenas - This comment is in Spanish and doesn't affect the CSS */
+}
+
+.herolabel p {
+    margin: 0;
+    padding: 0.25rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    font-family: "Great Vibes", serif;
+}
+
+section {
+    padding: 1rem;
+    background-color: #fff;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+.parent {
+    margin: 1rem;
+}
+
+.parent section {
+    border: 1px solid #bbb;
+    background-color: #e5f1fe;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.parent span {
+    background-color: #e8f1f3;
+    color: #333;
+    /* Changed to a darker color for better visibility */
+    display: block;
+    text-align: center;
+    padding: 1rem 0;
+    /* Adjusted padding to a reasonable value */
+}
+
+.parent p {
+    padding: 10px;
+}
+
+/* Mobile View ***************/
+#menu {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    background-color: #eee;
+    color: #000;
+}
+
+#menu::before {
+    content: "≡";
+}
+
+nav {
+    background-color: rgb(8, 78, 139);
+}
+
+.navigation {
+    list-style: none;
+    margin: 0 auto;
+    max-width: 760px;
+}
+
+.navigation li {
+    display: none;
+}
+
+.navigation a {
+    display: block;
+    padding: 0.75rem;
+    text-align: left;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.695);
+    font-weight: 700;
+    transition: 0.5s;
+    font-size: clamp(1rem, 2vmin, 1.5rem);
+}
+
+.navigation a:hover,
+.navigation a:active {
+    /* Corrected selector */
+    color: white;
+    background-color: black;
+}
+
+.show li {
+    display: block;
+}
+
+#menu.show::before {
+    content: "X";
+}
+
+@media only screen and (min-width: 40em) {
+    .navigation {
+        display: flex;
+    }
+
+    .navigation li {
+        display: block;
+        flex: 1 1 100%;
+    }
+
+    .navigation a {
+        text-align: center;
+    }
+
+    #menu {
+        display: none;
+    }
+}
