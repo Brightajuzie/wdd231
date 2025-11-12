@@ -1,73 +1,229 @@
-const gridButton = document.querySelector("#grid");
-const listButton = document.querySelector("#list");
-const display = document.querySelector("div.cards"); // Assuming you'll create a div with class 'cards' to hold the member info
-const membersURL = "data/members.json";
+const JSON_FILE_PATH = 'data/members.json';
+let companyData = []; // Store fetched data globally so we don't fetch repeatedly
+let currentView = 'grid'; // Initial view state
 
-async function getMembers() {
-  try {
-    const response = await fetch(membersURL);
-    if (response.ok) {
-      const data = await response.json();
-      // console.log(data); // For testing
-      displayMembers(data.members);
-    } else {
-      throw Error(await response.text());
+/**
+ * Fetches company data from a local JSON file using async/await.
+ * @returns {Promise<Array>} An array of company objects.
+ */
+async function fetchCompanyData() {
+    try {
+        const response = await fetch(JSON_FILE_PATH);
+        // console.log('fetched'); // Removed for production readiness
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        // Assuming the JSON structure is { "companies": [...] }
+        return data.companies || []; 
+
+    } catch (error) {
+        console.error('Error fetching company data:', error);
+        const list = document.getElementById('member-list');
+        
+        if (list) {
+            // Using textContent for safer error message display
+            list.innerHTML = `<p style="color: red;">Failed to load data: ${error.message}. Check the path: <strong>'${JSON_FILE_PATH}'</strong>.</p>`;
+        }
+        
+        return [];
     }
-  } catch (error) {
-    console.error("Error fetching members:", error);
-  }
 }
 
-function displayMembers(members) {
-  members.forEach((member) => {
-    let card = document.createElement("section");
-    card.classList.add("member-card"); // Add a class for styling
+/**
+ * Displays the company data in the designated HTML container and applies the current view mode.
+ * @param {Array} companies - Array of company objects.
+ * @param {string} viewMode - 'list' or 'grid'
+ */
+function displayCompanies(companies, viewMode) {
+    // Note: It's better to target the element that holds the cards directly
+    const cardsContainer = document.querySelector('.cards'); 
+    
+    if (!cardsContainer) {
+        console.error("Required HTML containers not found. Cannot display data.");
+        return;
+    }
+    
+    // 1. Update the parent container's class based on view mode
+    if (viewMode === 'list') {
+        cardsContainer.classList.remove('grid');
+        cardsContainer.classList.add('list');
+    } else { // 'grid' mode
+        cardsContainer.classList.remove('list');
+        cardsContainer.classList.add('grid');
+    }
+    
+    // 2. Clear previous content
+    cardsContainer.innerHTML = ''; 
 
-    let name = document.createElement("h2");
-    name.textContent = member.name;
+    if (companies.length === 0) {
+        cardsContainer.innerHTML = '<p>No company members found.</p>';
+        return;
+    }
 
-    let address = document.createElement("p");
-    address.textContent = member.address;
+    companies.forEach(company => {
+        const card = document.createElement('div');
+        card.classList.add('company-card', company.membershipLevel.toLowerCase());
+        
+        // --- Safer DOM Manipulation ---
 
-    let phone = document.createElement("p");
-    phone.textContent = member.phone;
+        // Image
+        if (company.image) {
+            const img = document.createElement('img');
+            img.setAttribute('src', company.image);
+            img.setAttribute('alt', `${company.name} logo`);
+            img.classList.add('company-logo');
+            card.appendChild(img);
+        }
 
-    let website = document.createElement("a");
-    website.href = member.website;
-    website.textContent = "Visit Website";
-    website.setAttribute("target", "_blank"); // Open in a new tab
+        // Name and Membership Level
+        const h3 = document.createElement('h3');
+        // Using textContent is safer than innerHTML for dynamic text
+        h3.textContent = `${company.name} (${company.membershipLevel})`;
+        card.appendChild(h3);
 
-    let image = document.createElement("img");
-    image.src = member.image;
-    image.alt = `Logo of ${member.name}`;
-    image.loading = "lazy"; // Improve performance
+        // Address
+        const addressP = document.createElement('p');
+        addressP.innerHTML = `<strong>Address:</strong> ${company.address}`;
+        card.appendChild(addressP);
 
-    let membership = document.createElement("p");
-    membership.textContent = `Membership Level: ${member.membershipLevel}`;
+        // Phone
+        const phoneP = document.createElement('p');
+        const phoneLink = document.createElement('a');
+        phoneLink.setAttribute('href', `tel:${company.phone}`);
+        phoneLink.textContent = company.phone;
+        phoneP.innerHTML = `<strong>Phone:</strong> `;
+        phoneP.appendChild(phoneLink);
+        card.appendChild(phoneP);
+        
+        // Website
+        const websiteP = document.createElement('p');
+        const websiteLink = document.createElement('a');
+        websiteLink.setAttribute('href', company.website);
+        websiteLink.setAttribute('target', '_blank');
+        websiteLink.textContent = company.website;
+        websiteP.innerHTML = `<strong>Website:</strong> `;
+        websiteP.appendChild(websiteLink);
+        card.appendChild(websiteP);
 
-    let otherInfo = document.createElement("p");
-    otherInfo.textContent = member.otherInfo;
-
-    card.appendChild(image);
-    card.appendChild(name);
-    card.appendChild(address);
-    card.appendChild(phone);
-    card.appendChild(website);
-    card.appendChild(membership);
-    card.appendChild(otherInfo);
-
-    display.appendChild(card);
-  });
+        // Dynamic Details (Established, Services, etc.)
+        if (company.established) {
+            const p = document.createElement('p');
+            p.innerHTML = `<strong>Established:</strong> ${company.established}`;
+            card.appendChild(p);
+        }
+        if (company.services) {
+            const p = document.createElement('p');
+            p.innerHTML = `<strong>Services:</strong> ${company.services.join(', ')}`;
+            card.appendChild(p);
+        }
+        // ... (Repeat for products and cuisine, or use a loop)
+        if (company.products) {
+            const p = document.createElement('p');
+            p.innerHTML = `<strong>Products:</strong> ${company.products.join(', ')}`;
+            card.appendChild(p);
+        }
+        if (company.cuisine) {
+            const p = document.createElement('p');
+            p.innerHTML = `<strong>Cuisine:</strong> ${company.cuisine.join(', ')}`;
+            card.appendChild(p);
+        }
+        
+        cardsContainer.appendChild(card);
+    });
 }
 
-gridButton.addEventListener("click", () => {
-  display.classList.add("grid");
-  display.classList.remove("list");
-});
+/**
+ * Handles the view toggle buttons (List/Grid).
+ * @param {string} mode - The view mode to switch to ('list' or 'grid').
+ */
+function toggleView(mode) {
+    const listButton = document.getElementById('list-button');
+    const gridButton = document.getElementById('grid-button');
+    
+    currentView = mode; // Update the global state
+    
+    // Update active button classes (Error handling for null removed as per brief)
+    if (listButton && gridButton) {
+        if (mode === 'list') {
+            listButton.classList.add('active-view');
+            gridButton.classList.remove('active-view');
+        } else {
+            listButton.classList.remove('active-view');
+            gridButton.classList.add('active-view');
+        }
+    }
 
-listButton.addEventListener("click", () => {
-  display.classList.remove("grid");
-  display.classList.add("list");
-});
+    // Re-display the data with the new view mode
+    displayCompanies(companyData, currentView);
+}
 
-getMembers();
+
+/**
+ * Main initialization function to run when the DOM is fully loaded.
+ */
+async function initializeDirectory() {
+    // 1. Attach event listeners for the view toggle buttons
+    const listButton = document.getElementById('list-button');
+    const gridButton = document.getElementById('grid-button');
+
+    if (listButton) {
+        listButton.addEventListener('click', () => toggleView('list'));
+    }
+
+    if (gridButton) {
+        gridButton.addEventListener('click', () => toggleView('grid'));
+    }
+
+    // 2. Fetch data and display initial view
+    companyData = await fetchCompanyData(); 
+    
+    // Use the initially set view 'grid'
+    displayCompanies(companyData, currentView); 
+}
+
+// 3. Run the initialization function immediately.
+// 'defer' in the script tag ensures the DOM is ready before this executes.
+initializeDirectory();
+/**
+ * Orchestrates the initial load of data and displays it in the default view.
+ */
+async function initialDataLoad() {
+    const listContainer = document.getElementById('member-list');
+    
+    if (listContainer) {
+        listContainer.innerHTML = '<p>Fetching member data...</p>';
+    }
+    
+    // Fetch data and store it once
+    companyData = await fetchCompanyData();
+    
+    // Display the data using the default initial view (which you requested to be 'grid')
+    displayCompanies(companyData, currentView);
+}
+
+// --- Event Listeners and Initial Setup ---
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Initial Load: Fetch data and display it immediately in the default 'grid' view
+    initialDataLoad(); 
+
+    // 2. Attach view toggle listeners
+    const listButton = document.getElementById('list-button');
+    const gridButton = document.getElementById('grid-button');
+
+    if (listButton) {
+        listButton.addEventListener('click', () => toggleView('list'));
+    }
+    
+    if (gridButton) {
+        gridButton.addEventListener('click', () => toggleView('grid'));
+    }
+    
+    // Ensure the initial active button matches the initial view ('grid')
+    if (listButton && gridButton) {
+        listButton.classList.remove('active-view');
+        gridButton.classList.add('active-view');
+    }
+});

@@ -393,7 +393,7 @@ input[type="date"]:focus,
 input[type="text"]:focus,
 input[type="email"]:focus,
 select:focus {
-    border-color: #007bff; 
+    border-color: #007bff; /* Changed focus color to match theme */
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     outline: none;
 }
@@ -466,115 +466,12 @@ input[type="submit"]:active {
     width: 80%; /* Good width for mobile buttons */
     max-width: 300px;
     cursor: pointer;
-    background-color: #ccc; 
-    border: 1px solid #007bff;
+    background-color: #ccc; /* Added a default button style */
+    border: 1px solid  #007bff;
     border-radius: 5px;
 }
 
-/* --- VIEW TOGGLE BUTTON STYLING (NEW) --- */
-.view-toggle-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 20px auto;
-    max-width: 1200px;
-    padding: 0 15px;
-}
-
-.view-toggle-buttons button {
-    padding: 10px 25px;
-    font-size: 1em;
-    font-weight: bold;
-    color: #007bff;
-    background-color: #f8f9fa;
-    border: 2px solid #007bff;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    flex-grow: 1;
-    max-width: 150px;
-}
-
-.view-toggle-buttons button:hover {
-    background-color: #e2e6ea;
-}
-
-.view-toggle-buttons .active-view {
-    /* Style for the currently active button */
-    color: white;
-    background-color: #007bff;
-    border-color: #0056b3;
-}
-
-/* --- MEMBER LIST CONTAINER STYLING --- */
-
-/* Base container for all member display */
-#member-list {
-    margin: 20px auto;
-    max-width: 1200px;
-    padding: 0 15px;
-}
-
-/* --- COMPANY CARD STYLING (ADJUSTED) --- */
-
-.company-card {
-    border: 1px solid #ddd; 
-    padding: 15px;
-    margin-bottom: 15px; /* Spacing in list view */
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-}
-
-.company-card h3 {
-    margin-top: 0;
-    color: #007bff;
-    font-size: 1.4em;
-    margin-bottom: 10px;
-}
-
-/* Membership Level Colors & Borders */
-.gold { 
-    background-color: #fffac8; 
-    border-left: 5px solid gold; 
-}
-.silver { 
-    background-color: #f0f0f0; 
-    border-left: 5px solid silver; 
-}
-.bronze { 
-    background-color: #f7e7e4; 
-    border-left: 5px solid #cd7f32; 
-}
-.non-profit {
-    background-color: #e3f2fd;
-    border-left: 5px solid #29b6f6;
-}
-
-
-/* --- GRID VIEW STYLES (Applies when .grid-view is added to #member-list) --- */
-.grid-view {
-    display: grid;
-    /* Create responsive columns: minimum 300px wide */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 20px;
-    margin-bottom: 40px;
-}
-
-.grid-view .company-card {
-    /* Remove vertical margin spacing for tight grid */
-    margin-bottom: 0; 
-    /* Enhance shadow for grid cards */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-}
-
-.grid-view .company-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-}
-
-
-/* --- COURSE CARD DISPLAY (RETAINED) --- */
+/* --- Course Card Display (Retained but simplified) --- */
 #course-cards-display {
     display: flex;
     flex-wrap: wrap;
@@ -613,14 +510,17 @@ input[type="submit"]:active {
 /* Complimentary, different style for COMPLETED courses */
 .course-card-completed {
     /* Different background color */
-    background-color: #e6ffe6; 
+    background-color: #e6ffe6; /* Light green/mint color */
+    
     /* Stronger border/outline */
-    border: 2px solid #28a745; 
+    border: 2px solid #28a745; /* Green border */
+    
+    /* Subtle checkmark icon or visual cue */
     position: relative;
 }
 
 .course-card-completed::after {
-    content: '✓'; 
+    content: '✓'; /* Simple checkmark */
     color: #28a745;
     font-size: 2em;
     position: absolute;

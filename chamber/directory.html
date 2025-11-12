@@ -20,40 +20,51 @@
 </head>
 
 <body>
-    <header>
-        <!--<div class="logo">ABA CHEMBER OF COMMERCE</div>-->
+    <!--test -->
 
-    </header>
-    <a id="menu" href="#"></a>
+    <!--header Tags-->
+    <header>
+    <div class="logo-container">
+        <img src="images/akpo-aza_app_logo.png" alt="Akpoaza Logo" class="header-logo">
+        
+        <h1>akpọ-aza</h1>
+    </div>
+    
+    
+
+            <a id="menu" href="#"></a>
     <nav>
         <ul class="navigation">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="discover.html">Discover</a></li>
-            <li><a href="directory.html">Directory</a></li>
-            <li><a href="join.html">Join</a></li>
+            <li><a href="directory.html" id="home" class="active">Home</a></li>
+            <li><a href="discover.html"id="discover">Discover</a></li>
+            <li><a href="directory.html"id="directory">Directory</a></li>
+            <li><a href="join.html" id="join">Join</a></li>
         </ul>
     </nav>
-    <main>
-        
-    <div id="view-toggle">
-        <button id="grid">Grid View</button>
-        <button id="list">List View</button>
-    </div>
-    <div class="cards grid">
 
+ 
+</header>
+<!--Header and Navigation Ends-->
+    
+    <main>
+       
+    <div class="view-toggle-buttons">
+    <button id="list-button" class="active-view">List View</button>
+    <button id="grid-button">Grid View</button>
+</div>
+    <div class="cards grid">
+        <!--<div id="member-list">-->
         
     </div>
     </main>
-    <footer>
-        <p>&copy; <span id="currentYear"></span> Chamber of Commerce. All rights reserved.</p>
-        <p>Last Modified: <span id="lastModified"></span></p>
-
-    </footer>
+  
     <!--Footers Ends-->
-    <script src="scripts/getDates.js"></script>
-
-    <script src="script/chamber.js"></script>
-    <script src="script/directory.js"></script>
+    <footer class="grid-item footer">
+    <p>&copy; <span id="currentYear"></span>  Chamber of Commerce | Bright Chidozie Onyekachi | Aba | Abia State Nigeria. All rights reserved.</p>
+    <p>Last Modified: <span id="lastModified"></span></p>
+  </footer>
+  <script src="scripts/directory.js" defer></script>
+  <script src="scripts/getDates.js" defer></script>
 </body>
 
 </html>
