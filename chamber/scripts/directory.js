@@ -9,23 +9,23 @@ let currentView = 'grid'; // Initial view state
 async function fetchCompanyData() {
     try {
         const response = await fetch(JSON_FILE_PATH);
-        // console.log('fetched'); // Removed for production readiness
+        // console.log('fetched'); // Removed debug log
 
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
         const data = await response.json();
-        // Assuming the JSON structure is { "companies": [...] }
         return data.companies || []; 
 
     } catch (error) {
         console.error('Error fetching company data:', error);
-        const list = document.getElementById('member-list');
+        // Using document.querySelector('.cards') for consistency
+        const cardsContainer = document.querySelector('.cards');
         
-        if (list) {
-            // Using textContent for safer error message display
-            list.innerHTML = `<p style="color: red;">Failed to load data: ${error.message}. Check the path: <strong>'${JSON_FILE_PATH}'</strong>.</p>`;
+        if (cardsContainer) {
+            // Using innerHTML is safe here as error message is static/controlled
+            cardsContainer.innerHTML = `<p style="color: red;">Failed to load data: ${error.message}. Check the path: <strong>'${JSON_FILE_PATH}'</strong>.</p>`;
         }
         
         return [];
@@ -33,27 +33,46 @@ async function fetchCompanyData() {
 }
 
 /**
+ * Creates a paragraph element with strong label text and dynamic content.
+ * Uses textContent for the dynamic value for XSS safety.
+ * @param {string} label - The bold label text.
+ * @param {any} value - The dynamic value to display (can be an array or string).
+ * @returns {HTMLParagraphElement} The created <p> element.
+ */
+function createDetailParagraph(label, value) {
+    if (!value) return null;
+
+    const p = document.createElement('p');
+    p.innerHTML = `<strong>${label}:</strong> `; // Label is trusted static content
+
+    // Convert arrays (like services, products) to comma-separated string
+    const textValue = Array.isArray(value) ? value.join(', ') : String(value);
+
+    // Use textContent to append the dynamic, potentially unsafe value
+    p.insertAdjacentText('beforeend', textValue);
+    
+    return p;
+}
+
+
+/**
  * Displays the company data in the designated HTML container and applies the current view mode.
+ * **FIXED:** Uses safer DOM methods and handles all unique JSON fields.
  * @param {Array} companies - Array of company objects.
  * @param {string} viewMode - 'list' or 'grid'
  */
 function displayCompanies(companies, viewMode) {
-    // Note: It's better to target the element that holds the cards directly
     const cardsContainer = document.querySelector('.cards'); 
     
+    // Fallback if the container is missing
     if (!cardsContainer) {
-        console.error("Required HTML containers not found. Cannot display data.");
+        console.error("Required HTML container (.cards) not found. Cannot display data.");
         return;
     }
     
     // 1. Update the parent container's class based on view mode
-    if (viewMode === 'list') {
-        cardsContainer.classList.remove('grid');
-        cardsContainer.classList.add('list');
-    } else { // 'grid' mode
-        cardsContainer.classList.remove('list');
-        cardsContainer.classList.add('grid');
-    }
+    cardsContainer.classList.remove(viewMode === 'list' ? 'grid' : 'list');
+    cardsContainer.classList.add(viewMode);
     
     // 2. Clear previous content
     cardsContainer.innerHTML = ''; 
@@ -67,9 +86,7 @@ function displayCompanies(companies, viewMode) {
         const card = document.createElement('div');
         card.classList.add('company-card', company.membershipLevel.toLowerCase());
         
-        // --- Safer DOM Manipulation ---
-
-        // Image
+        // --- Image ---
         if (company.image) {
             const img = document.createElement('img');
             img.setAttribute('src', company.image);
@@ -78,18 +95,15 @@ function displayCompanies(companies, viewMode) {
             card.appendChild(img);
         }
 
-        // Name and Membership Level
+        // --- Name and Membership Level ---
         const h3 = document.createElement('h3');
-        // Using textContent is safer than innerHTML for dynamic text
         h3.textContent = `${company.name} (${company.membershipLevel})`;
         card.appendChild(h3);
 
-        // Address
-        const addressP = document.createElement('p');
-        addressP.innerHTML = `<strong>Address:</strong> ${company.address}`;
-        card.appendChild(addressP);
+        // --- Address ---
+        card.appendChild(createDetailParagraph('Address', company.address));
 
-        // Phone
+        // --- Phone ---
         const phoneP = document.createElement('p');
         const phoneLink = document.createElement('a');
         phoneLink.setAttribute('href', `tel:${company.phone}`);
@@ -98,7 +112,7 @@ function displayCompanies(companies, viewMode) {
         phoneP.appendChild(phoneLink);
         card.appendChild(phoneP);
         
-        // Website
+        // --- Website ---
         const websiteP = document.createElement('p');
         const websiteLink = document.createElement('a');
         websiteLink.setAttribute('href', company.website);
@@ -108,28 +122,23 @@ function displayCompanies(companies, viewMode) {
         websiteP.appendChild(websiteLink);
         card.appendChild(websiteP);
 
-        // Dynamic Details (Established, Services, etc.)
-        if (company.established) {
-            const p = document.createElement('p');
-            p.innerHTML = `<strong>Established:</strong> ${company.established}`;
-            card.appendChild(p);
-        }
-        if (company.services) {
-            const p = document.createElement('p');
-            p.innerHTML = `<strong>Services:</strong> ${company.services.join(', ')}`;
-            card.appendChild(p);
-        }
-        // ... (Repeat for products and cuisine, or use a loop)
-        if (company.products) {
-            const p = document.createElement('p');
-            p.innerHTML = `<strong>Products:</strong> ${company.products.join(', ')}`;
-            card.appendChild(p);
-        }
-        if (company.cuisine) {
-            const p = document.createElement('p');
-            p.innerHTML = `<strong>Cuisine:</strong> ${company.cuisine.join(', ')}`;
-            card.appendChild(p);
-        }
+        // --- Dynamic Details (Using the helper function to cover all JSON fields) ---
+        
+        // Common Fields
+        card.appendChild(createDetailParagraph('Established', company.established));
+        card.appendChild(createDetailParagraph('Services', company.services));
+        card.appendChild(createDetailParagraph('Products', company.products));
+        card.appendChild(createDetailParagraph('Cuisine', company.cuisine));
+        
+        // Unique Fields (as per data/members.json)
+        card.appendChild(createDetailParagraph('Employees', company.employees));
+        card.appendChild(createDetailParagraph('Catering Services', company.cateringServices));
+        card.appendChild(createDetailParagraph('Educational Levels', company.levels));
+        card.appendChild(createDetailParagraph('Enrollment', company.enrollment));
+        card.appendChild(createDetailParagraph('Specialization', company.specialization));
+        card.appendChild(createDetailParagraph('Delivery Available', company.deliveryAvailable));
+        card.appendChild(createDetailParagraph('Agents', company.agents));
+        card.appendChild(createDetailParagraph('Turnaround Time', company.turnaroundTime));
         
         cardsContainer.appendChild(card);
     });
@@ -145,7 +154,7 @@ function toggleView(mode) {
     
     currentView = mode; // Update the global state
     
-    // Update active button classes (Error handling for null removed as per brief)
+    // Update active button classes
     if (listButton && gridButton) {
         if (mode === 'list') {
             listButton.classList.add('active-view');
@@ -155,11 +164,12 @@ function toggleView(mode) {
             gridButton.classList.add('active-view');
         }
     }
-
+    
     // Re-display the data with the new view mode
     displayCompanies(companyData, currentView);
 }
 
+// --- CRITICAL FIX: INITIALIZATION AND EVENT LISTENERS ---
 
 /**
  * Main initialization function to run when the DOM is fully loaded.
@@ -179,51 +189,8 @@ async function initializeDirectory() {
 
     // 2. Fetch data and display initial view
     companyData = await fetchCompanyData(); 
-    
-    // Use the initially set view 'grid'
     displayCompanies(companyData, currentView); 
 }
 
-// 3. Run the initialization function immediately.
-// 'defer' in the script tag ensures the DOM is ready before this executes.
+// Execute the main function to start the application
 initializeDirectory();
-/**
- * Orchestrates the initial load of data and displays it in the default view.
- */
-async function initialDataLoad() {
-    const listContainer = document.getElementById('member-list');
-    
-    if (listContainer) {
-        listContainer.innerHTML = '<p>Fetching member data...</p>';
-    }
-    
-    // Fetch data and store it once
-    companyData = await fetchCompanyData();
-    
-    // Display the data using the default initial view (which you requested to be 'grid')
-    displayCompanies(companyData, currentView);
-}
-
-// --- Event Listeners and Initial Setup ---
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initial Load: Fetch data and display it immediately in the default 'grid' view
-    initialDataLoad(); 
-
-    // 2. Attach view toggle listeners
-    const listButton = document.getElementById('list-button');
-    const gridButton = document.getElementById('grid-button');
-
-    if (listButton) {
-        listButton.addEventListener('click', () => toggleView('list'));
-    }
-    
-    if (gridButton) {
-        gridButton.addEventListener('click', () => toggleView('grid'));
-    }
-    
-    // Ensure the initial active button matches the initial view ('grid')
-    if (listButton && gridButton) {
-        listButton.classList.remove('active-view');
-        gridButton.classList.add('active-view');
-    }
-});
