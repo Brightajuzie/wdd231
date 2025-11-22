@@ -2,93 +2,128 @@
 <html lang="en">
 
 <head>
+    <title>Chamber of Commerce</title>
     <meta property="og:title" content="Aba Chamber of Commerce">
     <meta property="og:type" content="website">
-    <meta property="og:image"
-        content="https://www.kachlinks.com">
-    <meta property="og:url" content="https://www.kachlinks.com">
+    <meta property="og:image" content="https://www.kachlinks.com">
+    <meta property="og:url" content="https://brightajuzie.github.io/wdd231/chamber/directory.html">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta name="description"
-        content="WDD 230 - Web Frontend Development| Bright Chidozie Onyekchi| course assignment portal">
-     
-    <meta name="author" content="Bright Chidozie Onyekachi">
-    
-    <link rel="icon" href="images/favicon.png">
-     
-    <title>Aba Chamber of Commerce - Home</title>
-    <link rel="stylesheet" href="styles/base.css">
+    <meta name="description" content="WDD 231 - Web Frontend Development course assignment portal by Bright Chidozie Onyekchi. This collection documents completed projects, including interactive components, layout challenges, and data integration. It tracks the application of principles learned in class, ensuring a high standard of code quality and design.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   
+    <meta name="author" content="Bright Chidozie Onyekachi">
+    <meta charset="utf-8"> 
+     
+
+    <link rel="icon" href="images/favicon.png">
+
+    
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/normalize.css">
+     
+
 </head>
 
 <body>
+    <!--test -->
+
+    <!--header Tags-->
     <header>
-     <!--<div class="logo">ABA CHEMBER OF COMMERCE</div>-->
+    <div class="logo-container">
+        <img src="images/akpo-aza_app_logo.png" alt="Akpoaza Logo" class="header-logo">
         
-    </header>
-    <a id="menu" href="#"></a>
+        <h1>akpọ-aza</h1>
+    </div>
+    
+    
+
+            <a id="menu" href="#"></a>
     <nav>
         <ul class="navigation">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="discover.html">Discover</a></li>
-            <li><a href="directory.html">Directory</a></li>
-            <li><a href="join.html">Join</a></li>
+            <li><a href="directory.html" id="home" class="active">Home</a></li>
+            <li><a href="discover.html" id="discover">Discover</a></li>
+            <li><a href="directory.html" id="directory">Directory</a></li>
+            <li><a href="join.html" id="join">Join</a></li>
         </ul>
     </nav>
-    <main>
-        <section class="hero">
-            <img src="images/pic.jpg" alt="Local Area">
-            <div class="hero-content">
-                <h1>Aba Chamber of Commerce</h1>
-                <p>Our aim is to ensure the visibilty of made in Aba products, we encourage mebership and products exhbition.</p>
-                <h2>Promoting Business Growth in Aba</h2>
-                 <a href="join.html" class="cta">Join the Chamber</a>
-        </div>
-        </section>
-        <section class="community-info">
-            <h2>Updates</h2>
-            <p>Check out our latest news and events.</p>
-        </section>
-        <section class="weather">
-            <h3>Weather</h3>
-            <div class="weather-card">
-                <p>Temperature: <span id="current-temp"></span>°C</p>
-                <p>Condition: <span id="weather-condition"></span></p>
-                <img id="weather-icon" src="" alt="weathers">
-                <p>Humidity: <span id="humidity"></span>%</p>
-            </div>
-        </section>
-        
-         
-        <section class="business-spotlights">
-            <h2>Sales of Products</h2>
-            <div class="spotlight-grid">
-                <div class="spotlight-item">
-                    <img src="images/pic2.png" alt="Marketing">
-                    <h3>Marketing</h3>
-                    <p>We promote all locally made products in Aba Nigeria.</p>
-                </div>
-                <div class="spotlight-item">
-                    <img src="images/pic3.png" alt="Networking">
-                    <h3>Networking</h3>
-                    <p>We believe in collaboration, we encourage members to join the forum. </p>
-                </div>
-                <div class="spotlight-item">
-                    <img src="images/OIP.jfif" alt="Networking">
-                    <h3>Technology</h3>
-                    <p>Our Company believes in advancing technology </p>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; <span id="currentYear"></span> Chamber of Commerce. All rights reserved.</p>
-        <p>Last Modified: <span id="lastModified"></span></p>
+
+ 
+</header>
+<!--Header and Navigation Ends-->
     
-    </footer>
+    
+   <main>
+    
+    <section class="hero-section">
+    <img src="images/abaee.jpg" alt="A bustling market scene in Aba" class="hero-image">
+    
+    <div class="hero-content">
+        <h1>Aba Chamber of Commerce powered by Akpoaza</h1>
+        <p>Promoting Business Growth and ensuring the visibility of made-in-Aba products.</p>
+    </div>
+</section>
+
+    <section class="cta-section">
+        <h2>Join Our Community and Grow Your Business!</h2>
+        <p>Our aim is to ensure the visibility of made in Aba products. We encourage membership and product exhibition.</p>
+        <a href="join.html" class="cta-button">Join the Chamber</a>
+    </section>
+
+    <section class="home-info-widgets">
+        
+        <div class="events-section">
+            <h2 class="widget-header">Upcoming Events</h2>
+            <div class="event-item">
+                <h4>Sales of Products Exhibition</h4>
+                <p>We promote all locally made products in Aba Nigeria.</p>
+            </div>
+            </div>
+        
+        <div class="current-weather-card">
+            <h3 class="widget-header">Current Weather</h3>
+            <p id="town">Aba, Nigeria</p>
+            <div class="weather-icon">☀️</div> 
+            <p id="temperature" class="temperature">30°C</p>
+            <p id="description" class="condition">Clear Skies</p>
+        </div>
+        
+        <div class="forecast-card">
+            <h4 class="widget-header">5-Day Forecast</h4>
+            <div class="forecast-day">
+                <span>Mon</span> <span class="day-icon">🌤️</span> <span>28°C / 20°C</span>
+            </div>
+            <div class="forecast-day">
+                <span>Tue</span> <span class="day-icon">🌧️</span> <span>25°C / 18°C</span>
+            </div>
+            <div class="forecast-day">
+                <span>Wed</span> <span class="day-icon">☁️</span> <span>26°C / 19°C</span>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="spotlight-section">
+        <h2>Member Spotlights</h2>
+        <div class="spotlight-grid">
+            <p>Loading Chamber Spotlights...</p>
+        </div>
+    </section>
+
+</main>
+  
     <!--Footers Ends-->
-    <script src="scripts/getDates.js"></script>
-     
-    <script src="script/chamber.js"></script>
+    <footer class="grid-item footer">
+    <p>&copy; <span id="currentYear"></span>  Chamber of Commerce | Bright Chidozie Onyekachi | Aba | Abia State Nigeria. All rights reserved.</p>
+    <p>Last Modified: <span id="lastModified"></span></p>
+  </footer>
+  <script src="scripts/directory.js" defer></script>
+  <script src="scripts/gets.js" defer></script>
+  <script src="scripts/weather.js" defer></script>
 </body>
 
 </html>
