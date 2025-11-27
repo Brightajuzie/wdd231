@@ -104,3 +104,49 @@ if (daysElement) daysElement.textContent = `${daysleft.toFixed(0)} days`;
 // Date.now() timestamp
 const todayTimestampElement = document.querySelector('.today');
 if (todayTimestampElement) todayTimestampElement.textContent = Date.now();
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Set the Hidden Timestamp Field
+            const timestampField = document.getElementById('timestamp');
+            if (timestampField) {
+                // Set the current date and time when the form is loaded
+                const now = new Date();
+                timestampField.value = now.toISOString();
+            }
+
+            // 2. Initial Animation/Transition for Cards
+            // This waits a moment and then adds the 'active' class to trigger the transition
+            setTimeout(() => {
+                document.querySelectorAll('.card').forEach(card => {
+                    card.classList.add('active');
+                });
+            }, 100); 
+
+
+            // 3. Modal Functionality (Opening)
+            document.querySelectorAll('.open-modal-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const modalId = this.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+                    if (modal && typeof modal.showModal === 'function') {
+                        modal.showModal();
+                    } else {
+                        // Fallback for very old browsers, though highly unlikely
+                        alert(`Could not open modal: ${modalId}. Your browser may not support the dialog element.`);
+                    }
+                });
+            });
+
+            // 4. Close Modals with ESC (Handled by showModal(), but this ensures all close buttons work)
+            document.querySelectorAll('dialog').forEach(dialog => {
+                const closeButton = dialog.querySelector('button[onclick*="close"]');
+                if (closeButton) {
+                    closeButton.addEventListener('click', () => {
+                        dialog.close();
+                    });
+                }
+            });
+        });
+    

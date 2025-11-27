@@ -2,93 +2,202 @@
 <html lang="en">
 
 <head>
+    <title>Chamber of Commerce</title>
     <meta property="og:title" content="Aba Chamber of Commerce">
     <meta property="og:type" content="website">
-    <meta property="og:image"
-        content="https://www.kachlinks.com">
-    <meta property="og:url" content="https://www.kachlinks.com">
+    <meta property="og:image" content="https://www.kachlinks.com">
+    <meta property="og:url" content="https://brightajuzie.github.io/wdd231/chamber/directory.html">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta name="description"
-        content="WDD 230 - Web Frontend Development| Bright Chidozie Onyekchi| course assignment portal">
-     
-    <meta name="author" content="Bright Chidozie Onyekachi">
-    
-    <link rel="icon" href="images/favicon.png">
-     
-    <title>Aba Chamber of Commerce - Home</title>
-    <link rel="stylesheet" href="styles/base.css">
+    <meta name="description" content="WDD 231 - Web Frontend Development course assignment portal by Bright Chidozie Onyekchi. This collection documents completed projects, including interactive components, layout challenges, and data integration. It tracks the application of principles learned in class, ensuring a high standard of code quality and design.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   
+    <meta name="author" content="Bright Chidozie Onyekachi">
+    <meta charset="utf-8"> 
+     
+
+    <link rel="icon" href="images/favicon.png">
+
+    
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/normalize.css">
+     
+
 </head>
 
 <body>
+    <!--test -->
+
+    <!--header Tags-->
     <header>
-     <!--<div class="logo">ABA CHEMBER OF COMMERCE</div>-->
+    <div class="logo-container">
+        <img src="images/akpo-aza_app_logo.png" alt="Akpoaza Logo" class="header-logo">
         
-    </header>
-    <a id="menu" href="#"></a>
+        <h2>akpọ-aza</h2>
+    </div>
+    
+    
+
+            <a id="menu" href="#"></a>
     <nav>
         <ul class="navigation">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="discover.html">Discover</a></li>
-            <li><a href="directory.html">Directory</a></li>
-            <li><a href="join.html">Join</a></li>
+            <li><a href="directory.html" id="home" class="active">Home</a></li>
+            <li><a href="discover.html" id="discover">Discover</a></li>
+            <li><a href="directory.html" id="directory">Directory</a></li>
+            <li><a href="join.html" id="join">Join</a></li>
         </ul>
     </nav>
-    <main>
-        <section class="hero">
-            <img src="images/pic.jpg" alt="Local Area">
-            <div class="hero-content">
-                <h1>Aba Chamber of Commerce</h1>
-                <p>Our aim is to ensure the visibilty of made in Aba products, we encourage mebership and products exhbition.</p>
-                <h2>Promoting Business Growth in Aba</h2>
-                 <a href="join.html" class="cta">Join the Chamber</a>
-        </div>
-        </section>
-        <section class="community-info">
-            <h2>Updates</h2>
-            <p>Check out our latest news and events.</p>
-        </section>
-        <section class="weather">
-            <h3>Weather</h3>
-            <div class="weather-card">
-                <p>Temperature: <span id="current-temp"></span>°C</p>
-                <p>Condition: <span id="weather-condition"></span></p>
-                <img id="weather-icon" src="" alt="weathers">
-                <p>Humidity: <span id="humidity"></span>%</p>
-            </div>
-        </section>
-        
-         
-        <section class="business-spotlights">
-            <h2>Sales of Products</h2>
-            <div class="spotlight-grid">
-                <div class="spotlight-item">
-                    <img src="images/pic2.png" alt="Marketing">
-                    <h3>Marketing</h3>
-                    <p>We promote all locally made products in Aba Nigeria.</p>
-                </div>
-                <div class="spotlight-item">
-                    <img src="images/pic3.png" alt="Networking">
-                    <h3>Networking</h3>
-                    <p>We believe in collaboration, we encourage members to join the forum. </p>
-                </div>
-                <div class="spotlight-item">
-                    <img src="images/OIP.jfif" alt="Networking">
-                    <h3>Technology</h3>
-                    <p>Our Company believes in advancing technology </p>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; <span id="currentYear"></span> Chamber of Commerce. All rights reserved.</p>
-        <p>Last Modified: <span id="lastModified"></span></p>
+
+ 
+</header>
+<!--Header and Navigation Ends-->
     
-    </footer>
+    <main>
+
+    <h1>Membership Application Form</h1>
+
+    <div class="container">
+        <form method="get" action="thankyou.html">
+            
+            <input type="hidden" id="timestamp" name="timestamp">
+
+            <label for="first_name">
+                Applicant's First Name
+                <input type="text" id="first_name" name="first_name" title="Applicant's First Name" autocomplete="given-name" required>
+            </label>
+
+            <label for="last_name">
+                Applicant's Last Name
+                <input type="text" id="last_name" name="last_name" title="Applicant's Last Name" autocomplete="family-name" required>
+            </label>
+
+            <label for="org_title">
+                Organizational Title
+                <input type="text" id="org_title" name="org_title" title="Applicant's Organizational Title" autocomplete="organization-title" pattern="^[a-zA-Z\s\-]{7,}$" required>
+            </label>
+            <small style="display: block; margin-top: -10px; margin-bottom: 10px; color: #888;">Only letters, hyphens, and spaces allowed (min 7 characters).</small>
+
+            <label for="email">
+                Email Address
+                <input type="email" id="email" name="email" title="Email Address" autocomplete="email" placeholder="example@organization.com" required>
+            </label>
+
+            <label for="mobile">
+                Mobile Phone Number
+                <input type="tel" id="mobile" name="mobile" title="Mobile Phone Number" autocomplete="tel-national" required>
+            </label>
+
+            <label for="org_name">
+                Business/Organization's Name
+                <input type="text" id="org_name" name="org_name" title="Business/Organization's Name" autocomplete="organization" required>
+            </label>
+
+            <label for="membership">
+                Select Membership Level
+                <select id="membership" name="membership" title="Membership Level" required>
+                    <option value="" disabled selected>-- Select a Level --</option>
+                    <option value="np">NP Membership (No Fee)</option>
+                    <option value="bronze">Bronze Membership (Bronze)</option>
+                    <option value="silver">Silver Membership (Silver)</option>
+                    <option value="gold">Gold Membership (Gold)</option>
+                </select>
+            </label>
+
+            <label for="description">
+                Business/Organization's Description
+                <textarea id="description" name="description" title="Business/Organization's Description" rows="5"></textarea>
+            </label>
+
+            <input type="submit" value="Submit Application">
+        </form>
+
+        <div class="cards-container">
+            <h2>Membership Levels</h2>
+
+            <div class="card np" id="card-np">
+                <h3>NP Membership</h3>
+                <a href="#" class="open-modal-link" data-modal="modal-np">View Benefits</a>
+            </div>
+
+            <div class="card bronze" id="card-bronze">
+                <h3>Bronze Membership</h3>
+                <a href="#" class="open-modal-link" data-modal="modal-bronze">View Benefits</a>
+            </div>
+
+            <div class="card silver" id="card-silver">
+                <h3>Silver Membership</h3>
+                <a href="#" class="open-modal-link" data-modal="modal-silver">View Benefits</a>
+            </div>
+
+            <div class="card gold" id="card-gold">
+                <h3>Gold Membership</h3>
+                <a href="#" class="open-modal-link" data-modal="modal-gold">View Benefits</a>
+            </div>
+
+        </div>
+    </div>
+
+    <dialog id="modal-np">
+        <h3>NP Membership Benefits (No Fee)</h3>
+        <p>This membership is for non-profit organizations and includes basic access to resources:</p>
+        <ul>
+            <li>Access to the Monthly Newsletter.</li>
+            <li>Inclusion in the online member directory.</li>
+            <li>5% discount on Annual Conference tickets.</li>
+        </ul>
+        <button type="button" onclick="this.closest('dialog').close()">Close</button>
+    </dialog>
+
+    <dialog id="modal-bronze">
+        <h3>Bronze Membership Benefits</h3>
+        <p>The Bronze level provides enhanced support for small businesses:</p>
+        <ul>
+            <li>All NP Membership benefits.</li>
+            <li>Free access to one online training workshop per year.</li>
+            <li>10% discount on all special events.</li>
+            <li>Listing in the printed member directory.</li>
+        </ul>
+        <button type="button" onclick="this.closest('dialog').close()">Close</button>
+    </dialog>
+
+    <dialog id="modal-silver">
+        <h3>Silver Membership Benefits</h3>
+        <p>The Silver level offers significant promotional and training opportunities:</p>
+        <ul>
+            <li>All Bronze Membership benefits.</li>
+            <li>Free access to all online training workshops.</li>
+            <li>Opportunity for a "Member Spotlight" position on the home page once per year.</li>
+            <li>Dedicated networking sessions.</li>
+        </ul>
+        <button type="button" onclick="this.closest('dialog').close()">Close</button>
+    </dialog>
+
+    <dialog id="modal-gold">
+        <h3>Gold Membership Benefits</h3>
+        <p>The Gold level is our premium offering, providing maximum exposure and value:</p>
+        <ul>
+            <li>All Silver Membership benefits.</li>
+            <li>25% discount on all advertising packages.</li>
+            <li>Priority registration for all events.</li>
+            <li>Exclusive invitation to the annual "Gold Circle" reception with the board members.</li>
+            <li>Dedicated account manager.</li>
+        </ul>
+        <button type="button" onclick="this.closest('dialog').close()">Close</button>
+    </dialog>
+</main>
+  
     <!--Footers Ends-->
-    <script src="scripts/getDates.js"></script>
-     
-    <script src="script/chamber.js"></script>
+    <footer class="grid-item footer">
+    <p>&copy; <span id="currentYear"></span>  Chamber of Commerce | Bright Chidozie Onyekachi | Aba | Abia State Nigeria. All rights reserved.</p>
+    <p>Last Modified: <span id="lastModified"></span></p>
+  </footer>
+  <script src="scripts/directory.js" defer></script>
+  <script src="scripts/gets.js" defer></script>
+  <script src="scripts/weather.js" defer></script>
 </body>
 
 </html>
