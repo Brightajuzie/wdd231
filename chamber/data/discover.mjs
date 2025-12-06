@@ -45,6 +45,6 @@ export const pointsOfInterest = [
         name: "Luxury City Hotel",
         address: "Factory Road, Aba",
         description: "One of the city's premier hospitality centers, providing lodging and conference facilities.",
-        image: "images/luxury_1_300x300.webp"
+        image: "images/luxury_1_300x200.webp"
     }
 ];
