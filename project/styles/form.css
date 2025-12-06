@@ -1,0 +1,199 @@
+/* ========================================================== */
+/* WDD 131 PRODUCT REVIEW FORM STYLES (Cleaned and Adjusted)  */
+/* ========================================================== */
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base Body and Typography */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6; 
+    background-color: #f7f9fc; /* Light background for the page */
+    padding: 20px;
+}
+
+/* Header and Headings (Retained necessary styles for context) */
+header {
+    background-color: #243dae; /* Dark green primary color */
+    color: white;
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    color: white;
+}
+
+h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #243dae; /* Blue secondary color */
+    margin-bottom: 20px;
+}
+
+.center {
+    text-align: center;
+    color: tomato;
+    padding: 20px 0;
+}
+
+/* Main Content and Form Container */
+main { 
+    margin: 0 auto;
+    padding: 20px;
+}
+
+form {
+    max-width: 900px;
+    margin: 0 auto; 
+    padding: 30px; 
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Grouping */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label { 
+    display: block; 
+    margin-bottom: 8px; 
+    font-weight: bold; 
+    color: #333;
+}
+
+/* Input Fields (Date, Text, Select) */
+input[type="date"],
+input[type="text"],
+select {
+    width: 100%; 
+    padding: 10px;
+    margin-bottom: 5px; 
+    border: 1px solid #ddd;
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    font-size: 1em;
+    color: #243dae; 
+
+     transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+ 
+
+/* Textarea Styling */
+textarea {
+    width: 100%; 
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+    font-family: inherit;
+    resize: vertical; 
+    min-height: 120px; 
+    line-height: 1.5;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    color: #243dae; 
+}
+
+textarea:focus {
+    border-color: #243dae; /* Use blue focus color */
+    box-shadow: 0 0 5px rgba(36, 61, 174, 0.5);
+    outline: none;
+}
+
+/* Rating and Checkbox Grouping */
+.rating-group { 
+    display: flex; 
+    align-items: center; 
+    margin-top: 5px; 
+}
+
+.rating-group label { 
+    margin-right: 15px;
+    font-weight: normal;
+}
+
+.checkbox-group { 
+    display: flex; 
+    flex-wrap: wrap; /* Allows checkboxes to wrap on smaller screens */
+    gap: 15px;
+    padding: 5px 0;
+}
+
+.checkbox-group label {
+    display: inline-flex; /* Use flex for aligning checkbox and label */
+    align-items: center;
+    margin-bottom: 0; 
+    font-weight: normal;
+}
+        
+.checkbox-group input { 
+    margin-right: 5px;
+}
+
+.star-label {
+    cursor: pointer; 
+    color: gold; 
+    font-size: 1.5em;
+}
+
+ 
+input[type="submit"] {
+    /* Layout and Sizing */
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+
+    /* Appearance */
+    background-color: #007bff; /* Bright blue color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+
+    /* Text */
+    font-size: 1.1em;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    /* Interaction */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 15px; /* Ensure spacing from field above */
+}
+
+/* Hover/Focus States */
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+input[type="submit"]:active {
+    background-color: #004085; 
+    transform: translateY(1px); /* Pressed effect */
+}
+
+/* Footer Styling (Retained for completeness) */
+.footer {
+    background-color: #243dae;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer p {
+    margin: 5px 0;
+}

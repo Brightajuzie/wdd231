@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>WDD 131: - Dynamic Web Fundamentals-Bright Chidozie Onyekachi</title> 
+    <link rel ="icon" href="images/favicon.png">
+    <link rel="stylesheet" href="styles/styles.css">
+    
+
+   
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="WDD 131: -Dynamic Web Fundamentals| Bright Chidozie Onyekchi| course assignment portal">
+    <meta name="author" content="Bright Chidozie Onyekachi">
+    <meta charset="utf-8"> 
+    
+    
+    
+  </head>
+  <body>
+    <!--header Tags-->
+    <header>
+    <div class="logo-container">
+        <img src="images/akpo-aza_app_logo.png" alt="Akpoaza Logo" class="header-logo">
+        
+        <h1>akpọ-aza</h1>
+    </div>
+    
+    <a id="menu" href="#"></a>
+    
+    <nav>
+      
+         <ul class="navigation">
+            <li><a href="index.html" id="home" class="active">Home</a></li>   
+            <li><a href="form.html" id="review">Review</a></li> 
+             <li><a href="contact.html" id="contact">Contact</a></li> 
+             
+        </ul>
+    </nav>
+</header>
+<!--Header and Navigation Ends-->
+
+  <main>
+      <h1 class="center">
+        Fill in the Boxes</h1>
+        
+        
+       <form class ="form-group" action="review.html" method="get" id="form">
+        
+ 
+<h2>We are glad to take your reviews</h2>
+
+        <div class="form-group">
+            <label for="productName">Type of Service:</label>
+            <select id="productName" name="productName" required>
+                <option value="" disabled selected>Select a Service ...</option>
+                </select>
+        </div>
+
+        <div class="form-group">
+            <label>Overall Rating:</label>
+            <div class="rating-group">
+                <input type="radio" id="rating-1" name="overallRating" value="1"  required>
+               <p> <label for="rating-1" class="star-label" title="1 Star">★</label></p>
+
+                <input type="radio" id="rating-2" name="overallRating" value="2" required>
+                <label for="rating-2" class="star-label" title="2 Stars">★★</label>
+
+                 <input type="radio" id="rating-3" name="overallRating" value="3" required>
+                <label for="rating-3" class="star-label" title="3 Stars">★★★</label>
+
+                <input type="radio" id="rating-4" name="overallRating" value="4" required>
+                
+                <label for="rating-4" class="star-label" title="4 Stars">★★★★</label>
+                
+                <input type="radio" id="rating-5" name="overallRating" value="5" required>
+                <label for="rating-5" class="star-label" title="5 Stars">★★★★★</label>
+
+            </div>
+        </div>
+        
+        
+        <div class="form-group">
+            <label for="date-installed">Date of Request:</label>
+            <input type="date" id="date-installed" name="dateInstalled" required>
+        </div>
+
+        <div class="form-group">
+            <label>Useful Features (Check all that apply):</label>
+            <div class="checkbox-group">
+                <label for="feature-a">Reliability</label>
+                <input type="checkbox" id="feature-a" name="usefulFeatures" value="Reliability">
+
+                <label for="feature-b">Safely Delivery</label>
+                <input type="checkbox" id="feature-b" name="usefulFeatures" value="Safely Delivery">
+                
+                <label for="feature-c">Timely</label>
+                <input type="checkbox" id="feature-c" name="usefulFeatures" value="Timely">
+
+                <label for="feature-d"> Efficiency</label>
+                <input type="checkbox" id="feature-d" name="usefulFeatures" value="Efficiency">
+                 
+            </div>
+        </div>
+
+        <div class="form-group">
+    <label for="written_review">Written Review(Optional):</label>
+    <textarea id="written_review" name="writtenReview" rows="6"></textarea>
+</div>
+
+        <div class="form-group">
+            <label for="name">Your Name (Optional):</label>
+            <input type="text" id="name" name="name" >
+        </div>
+
+
+        <div class="form-group">
+            <input type="submit" id="submit" name="submit" value="Submit Review">
+        </div>
+
+
+        </form>
+
+  </main>
+  <footer class="grid-item footer">
+    <p>&copy; <span id="currentYear"></span> Bright Chidozie Onyekachi | Aba | Abia State Nigeria. All rights reserved.</p>
+    <p>Last Modified: <span id="lastModified"></span></p>
+  </footer>
+  <script src="scripts/getDates.js" defer></script>
+  <script src="scripts/form.js" defer></script>
+
+</body>
+</html>
