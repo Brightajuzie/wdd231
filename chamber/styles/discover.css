@@ -1,0 +1,156 @@
+/* ================================================= */
+/* Discover Page Styles */
+/* ================================================= */
+
+.discover-main {
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.visit-message-section {
+    background-color: #f0f0f0; 
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.discover-hero {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.poi-gallery {
+    padding: 10px;
+}
+
+.grid-container {
+    display: grid;
+    gap: 20px;
+    padding: 10px;
+    /* Define a default grid template for mobile */
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(8, auto);
+    
+    /* Named Grid Areas for Small Screens (320px to 640px) */
+    grid-template-areas:
+        "card1"
+        "card2"
+        "card3"
+        "card4"
+        "card5"
+        "card6"
+        "card7"
+        "card8";
+}
+
+.card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    color: var(--primary-color); /* Assuming you have a primary color variable */
+    margin-top: 0;
+}
+
+.card figure {
+    margin: 10px 0;
+}
+
+.card img {
+    width: 100%; /* Make image responsive within the card */
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover;
+    display: block;
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card address {
+    font-style: normal;
+    color: #555;
+    margin: 5px 0;
+}
+
+.card p {
+    flex-grow: 1; /* Allows the description to take up available space */
+    margin-bottom: 15px;
+}
+
+.card button {
+    background-color: #007bff; /* Example button color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: auto; /* Pushes the button to the bottom */
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+    background-color: #0056b3;
+}
+
+/* Assign Grid Areas for Small Screens */
+.card:nth-child(1) { grid-area: card1; }
+.card:nth-child(2) { grid-area: card2; }
+.card:nth-child(3) { grid-area: card3; }
+.card:nth-child(4) { grid-area: card4; }
+.card:nth-child(5) { grid-area: card5; }
+.card:nth-child(6) { grid-area: card6; }
+.card:nth-child(7) { grid-area: card7; }
+.card:nth-child(8) { grid-area: card8; }
+
+
+/* ================================================= */
+/* Medium Screens (641px to 1024px) */
+/* ================================================= */
+@media (min-width: 1025px) {
+    .grid-container {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, auto);
+        /* Named Grid Areas for Large Screens (4x2 layout) */
+        grid-template-areas:
+            "card1 card2 card3 card4"
+            "card5 card6 card7 card8";
+    }
+
+    /* Assign Grid Areas for Medium Screens */
+    /* No need to re-assign if the grid-area names are consistent */
+    
+    /* Image Hover Effect: Apply only for medium and large screens */
+    .card img:hover {
+        transform: scale(1.05); /* Zoom effect */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Subtle shadow lift */
+        filter: brightness(1.1); /* Slight brightness increase */
+    }
+}
+
+
+/* ================================================= */
+/* Large Screens (1025px and above) */
+/* ================================================= */
+@media (min-width: 1025px) {
+    .grid-container {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, auto);
+        /* Named Grid Areas for Large Screens (4x2 layout) */
+        grid-template-areas:
+            "card1 card2 card3 card4"
+            "card5 card6 card7 card8";
+    }
+}
