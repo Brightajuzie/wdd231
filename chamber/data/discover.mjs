@@ -27,7 +27,7 @@ export const pointsOfInterest = [
         name: "Aba Sports Club",
         address: "Ikpeazu Road, Aba",
         description: "A historic recreational center offering facilities for golf, tennis, swimming, and social events.",
-        image: "images/sportsclub_300X200.webp"
+        image: "images/pic1.webp"
     },
     {
         name: "Aba River Bridge",
