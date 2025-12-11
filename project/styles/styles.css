@@ -1,4 +1,4 @@
- 
+/* GLOBAL STYLES */
 * {
     margin: 0;
     padding: 0;
@@ -78,7 +78,7 @@ nav a:hover {
 }
 
 .active {
-    color: blue
+    color: rgb(71, 255, 252);
 }
 
 /* INTRO CONTENT AND IMAGE WRAPPING */
@@ -132,7 +132,7 @@ nav a:hover {
     text-align: center;
 }
 
-/* SERVICES GRID */
+/* SERVICES GRID (Original Home Page Services) */
 .services-heading {
     margin-top: 40px;
     margin-bottom: 30px;
@@ -259,7 +259,7 @@ nav a:hover {
 }
 
 
-/* FORM STYLING  */
+/* FORM STYLING  */
 form {
     max-width: 900px;
     margin: 0 auto; 
@@ -295,7 +295,7 @@ textarea { /* Added textarea to this group for consistent border/focus */
     box-sizing: border-box; 
     font-size: 1em;
     font-family: inherit;
-    color: #243dae; 
+    color: #243dae; /* Primary blue color for input text */
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
@@ -376,5 +376,91 @@ input[type="submit"]:active {
     }
     nav ul {
         flex-direction: row; /* Horizontal navigation on desktop */
+    }
+}
+
+
+/* =======================================================
+   HANDYMAN/RIDER CARD STYLING (SPOTLIGHTS/DIRECTORY)
+   ======================================================= */
+
+/* 1. Base Styles (Small Screen - 1 Column Vertical) */
+.spotlight-grid {
+    display: grid;
+    /* Sets up a single column by default (Vertical stack for small screens) */
+    grid-template-columns: 1fr; 
+    gap: 20px; /* Spacing between cards */
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* Card Styling (Assuming .spotlight-card wraps each handyman) */
+.spotlight-card {
+    width: 100%; 
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0; 
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #243dae; /* Blue text color as requested previously */
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; /* Added box-shadow/border-color to transition */
+}
+
+/* Hover effect for the card itself */
+.spotlight-card:hover {
+    transform: translateY(-5px); /* Lift the card slightly */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+    border-color: #007bff; /* Highlight border with main color */
+}
+
+/* Image styling for circular avatars */
+.spotlight-card .spotlight-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%; /* Makes the images circular */
+    margin-bottom: 15px;
+    border: 3px solid #007bff;
+}
+
+/* Standard Button Style (Added for uniformity) */
+.spotlight-card button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    width: 100%; /* Make button full width of card content */
+    margin-top: 15px;
+}
+
+/* Button Styling for Available (Green/Success) */
+.spotlight-card button.available {
+    background-color: #28a745; /* Green */
+    color: white;
+}
+
+.spotlight-card button.available:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+}
+
+/* Button Styling for Unavailable (Gray/Disabled look) */
+.spotlight-card button.unavailable {
+    background-color: #ccc; /* Light gray */
+    color: #666;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+/* 2. Large Screen Styles (3 Columns Horizontal) */
+@media screen and (min-width: 768px) {
+    /* Apply the 3-column layout when the screen is 768px wide or larger */
+    .spotlight-grid {
+        /* Creates three columns of equal width */
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 30px; /* Increase gap for larger screens */
     }
 }

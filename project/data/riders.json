@@ -1,0 +1,81 @@
+{
+  "riders": [
+    {
+      "name": "Chinedu Okoro",
+      "riderID": "AKR-001",
+      "phone": "+234 801 111 2222",
+      "vehicleType": "Motorcycle",
+      "image": "images/ride1.jpg",
+      "rating": 4.8,
+      "zone": "Market Area",
+      "available": true,
+      "deliveriesCompleted": 1250
+    },
+    {
+      "name": "Amara Nnadi",
+      "riderID": "AKR-002",
+      "phone": "+234 702 333 4444",
+      "vehicleType": "Bicycle",
+      "image": "images/ride2.jpg",
+      "rating": 4.5,
+      "zone": "Industrial Layout",
+      "available": true,
+      "deliveriesCompleted": 580
+    },
+    {
+      "name": "Uchechukwu Eze",
+      "riderID": "AKR-003",
+      "phone": "+234 903 555 6666",
+      "vehicleType": "Small Van",
+      "image": "images/ride3.jpg",
+      "rating": 4.9,
+      "zone": "Aba-Owerri Road Axis",
+      "available": false,
+      "deliveriesCompleted": 2100
+    },
+    {
+      "name": "Ngozi Eke",
+      "riderID": "AKR-004",
+      "phone": "+234 814 777 8888",
+      "vehicleType": "Motorcycle",
+      "image": "images/ride4.jpg",
+      "rating": 4.6,
+      "zone": "Asa Road/Hospital Road",
+      "available": true,
+      "deliveriesCompleted": 950
+    },
+    {
+      "name": "Emeka Kalu",
+      "riderID": "AKR-005",
+      "phone": "+234 705 999 0000",
+      "vehicleType": "Bicycle",
+      "image": "images/ride5.jpg",
+      "rating": 4.3,
+      "zone": "Umuocham & Environs",
+      "available": true,
+      "deliveriesCompleted": 320
+    },
+    {
+      "name": "Ifeanyi Obi",
+      "riderID": "AKR-006",
+      "phone": "+234 906 123 4567",
+      "vehicleType": "Motorcycle",
+      "image": "images/ride6.jpg",
+      "rating": 4.7,
+      "zone": "Azikiwe Road",
+      "available": true,
+      "deliveriesCompleted": 1560
+    },
+    {
+      "name": "Nkechi Onye",
+      "riderID": "AKR-007",
+      "phone": "+234 817 890 1234",
+      "vehicleType": "Motorcycle",
+      "image": "images/ride7.jpg",
+      "rating": 4.4,
+      "zone": "Factory Road",
+      "available": false,
+      "deliveriesCompleted": 875
+    }
+  ]
+}
